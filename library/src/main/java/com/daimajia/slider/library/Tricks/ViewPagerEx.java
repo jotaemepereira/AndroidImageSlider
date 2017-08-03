@@ -1801,7 +1801,6 @@ public class ViewPagerEx extends ViewGroup{
          * If we return true, onMotionEvent will be called and we do the actual
          * scrolling there.
          */
-
         final int action = ev.getAction() & MotionEventCompat.ACTION_MASK;
 
         // Always take care of the touch gesture being complete.
