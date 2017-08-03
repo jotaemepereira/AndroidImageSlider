@@ -34,6 +34,7 @@ import com.daimajia.slider.library.Transformers.ZoomOutTransformer;
 import com.daimajia.slider.library.Tricks.FixedSpeedScroller;
 import com.daimajia.slider.library.Tricks.InfinitePagerAdapter;
 import com.daimajia.slider.library.Tricks.InfiniteViewPager;
+import com.daimajia.slider.library.Tricks.InfiniteViewPagerFix;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
 import java.lang.reflect.Field;
@@ -90,7 +91,7 @@ public class SliderLayout extends RelativeLayout{
     /**
      * InfiniteViewPager is extended from ViewPagerEx. As the name says, it can scroll without bounder.
      */
-    private InfiniteViewPager mViewPager;
+    private InfiniteViewPagerFix mViewPager;
 
     /**
      * InfiniteViewPager adapter.
@@ -187,7 +188,7 @@ public class SliderLayout extends RelativeLayout{
         mSliderAdapter = new SliderAdapter(mContext);
         PagerAdapter wrappedAdapter = new InfinitePagerAdapter(mSliderAdapter);
 
-        mViewPager = (InfiniteViewPager)findViewById(R.id.daimajia_slider_viewpager);
+        mViewPager = (InfiniteViewPagerFix)findViewById(R.id.daimajia_slider_viewpager);
         mViewPager.setAdapter(wrappedAdapter);
 
         mViewPager.setOnTouchListener(new OnTouchListener() {
