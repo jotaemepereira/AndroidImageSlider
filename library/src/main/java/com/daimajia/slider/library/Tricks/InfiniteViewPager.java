@@ -24,16 +24,4 @@ public class InfiniteViewPager extends ViewPagerEx {
     public void setAdapter(PagerAdapter adapter) {
         super.setAdapter(adapter);
     }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        try {
-            return super.onInterceptTouchEvent(ev);
-        } catch (IllegalArgumentException e) {
-            //uncomment if you really want to see these errors
-            //e.printStackTrace();
-            return false;
-        }
-    }
-
 }
