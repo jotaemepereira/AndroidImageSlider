@@ -374,7 +374,7 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
      */
     private int getShouldDrawCount(){
         if(mPager.getAdapter() instanceof InfinitePagerAdapter){
-            return ((InfinitePagerAdapter)mPager.getAdapter()).getRealCount();
+            return mPager.getAdapter().getCount();
         }else{
             return mPager.getAdapter().getCount();
         }
@@ -386,7 +386,7 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
             PagerAdapter adapter = mPager.getAdapter();
             int count = 0;
             if(adapter instanceof InfinitePagerAdapter){
-                count = ((InfinitePagerAdapter)adapter).getRealCount();
+                count = adapter.getCount();
             }else{
                 count = adapter.getCount();
             }

@@ -29,56 +29,61 @@ public class InfinitePagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        // warning: scrolling to very high values (1,000,000+) results in
-        // strange drawing behaviour
-        return Integer.MAX_VALUE;
-    }
-
-    /**
-     * @return the {@link #getCount()} result of the wrapped adapter
-     */
-    public int getRealCount() {
         return adapter.getCount();
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        if(getRealCount() == 0){
-            return null;
-        }
-        int virtualPosition = position % getRealCount();
-        debug("instantiateItem: real position: " + position);
-        debug("instantiateItem: virtual position: " + virtualPosition);
-
-        // only expose virtual position to the inner adapter
-        return adapter.instantiateItem(container, virtualPosition);
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        if(getRealCount() == 0){
-            return;
-        }
-        int virtualPosition = position % getRealCount();
-        debug("destroyItem: real position: " + position);
-        debug("destroyItem: virtual position: " + virtualPosition);
-
-        // only expose virtual position to the inner adapter
-        adapter.destroyItem(container, virtualPosition, object);
-    }
-
-    /*
-     * Delegate rest of methods directly to the inner adapter.
-     */
-
-    @Override
-    public void finishUpdate(ViewGroup container) {
-        adapter.finishUpdate(container);
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return adapter.isViewFromObject(view, object);
+    }
+
+//    @Override
+//    public int getCount() {
+//        // warning: scrolling to very high values (1,000,000+) results in
+//        // strange drawing behaviour
+//        return adapter.getCount();
+//    }
+//
+//    /**
+//     * @return the {@link #getCount()} result of the wrapped adapter
+//     */
+//    public int getRealCount() {
+//        return adapter.getCount();
+//    }
+//
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+//        if(getRealCount() == 0){
+//            return null;
+//        }
+//        int virtualPosition = position % getRealCount();
+//        debug("instantiateItem: real position: " + position);
+//        debug("instantiateItem: virtual position: " + virtualPosition);
+
+        // only expose virtual position to the inner adapter
+        return adapter.instantiateItem(container, position);
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+//        if(getRealCount() == 0){
+//            return;
+//        }
+//        int virtualPosition = position % getRealCount();
+//        debug("destroyItem: real position: " + position);
+//        debug("destroyItem: virtual position: " + virtualPosition);
+//
+//        // only expose virtual position to the inner adapter
+        adapter.destroyItem(container, position, object);
+    }
+//
+//    /*
+//     * Delegate rest of methods directly to the inner adapter.
+//     */
+//
+    @Override
+    public void finishUpdate(ViewGroup container) {
+        adapter.finishUpdate(container);
     }
 
     @Override
@@ -95,14 +100,14 @@ public class InfinitePagerAdapter extends PagerAdapter {
     public void startUpdate(ViewGroup container) {
         adapter.startUpdate(container);
     }
-
-    /*
-     * End delegation
-     */
-
-    private void debug(String message) {
-        if (DEBUG) {
-            Log.d(TAG, message);
-        }
-    }
+//
+//    /*
+//     * End delegation
+//     */
+//
+//    private void debug(String message) {
+//        if (DEBUG) {
+//            Log.d(TAG, message);
+//        }
+//    }
 }

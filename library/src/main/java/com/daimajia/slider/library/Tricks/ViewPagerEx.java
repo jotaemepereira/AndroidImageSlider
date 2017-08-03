@@ -308,12 +308,13 @@ public class ViewPagerEx extends ViewGroup{
     private void triggerOnPageChangeEvent(int position) {
         for (OnPageChangeListener eachListener : mOnPageChangeListeners) {
             if (eachListener != null) {
-                InfinitePagerAdapter infiniteAdapter = (InfinitePagerAdapter)mAdapter;
-                if (infiniteAdapter.getRealCount() == 0) {
-                    return;
-                }
-                int n = position % infiniteAdapter.getRealCount();
-                eachListener.onPageSelected(n);
+//                InfinitePagerAdapter infiniteAdapter = (InfinitePagerAdapter)mAdapter;
+//                if (infiniteAdapter.getRealCount() == 0) {
+//                    return;
+//                }
+//                int n = position % infiniteAdapter.getRealCount();
+                eachListener.onPageSelected(position);
+//                eachListener.onPageSelected(n);
             }
         }
         if (mInternalPageChangeListener != null) {
@@ -968,20 +969,20 @@ public class ViewPagerEx extends ViewGroup{
         final int N = mAdapter.getCount();
         final int endPos = Math.min(N-1, mCurItem + pageLimit);
 
-        if (N != mExpectedAdapterCount) {
-            String resName;
-            try {
-                resName = getResources().getResourceName(getId());
-            } catch (Resources.NotFoundException e) {
-                resName = Integer.toHexString(getId());
-            }
-            throw new IllegalStateException("The application's PagerAdapter changed the adapter's" +
-                    " contents without calling PagerAdapter#notifyDataSetChanged!" +
-                    " Expected adapter item count: " + mExpectedAdapterCount + ", found: " + N +
-                    " Pager id: " + resName +
-                    " Pager class: " + getClass() +
-                    " Problematic adapter: " + mAdapter.getClass());
-        }
+//        if (N != mExpectedAdapterCount) {
+//            String resName;
+//            try {
+//                resName = getResources().getResourceName(getId());
+//            } catch (Resources.NotFoundException e) {
+//                resName = Integer.toHexString(getId());
+//            }
+//            throw new IllegalStateException("The application's PagerAdapter changed the adapter's" +
+//                    " contents without calling PagerAdapter#notifyDataSetChanged!" +
+//                    " Expected adapter item count: " + mExpectedAdapterCount + ", found: " + N +
+//                    " Pager id: " + resName +
+//                    " Pager class: " + getClass() +
+//                    " Problematic adapter: " + mAdapter.getClass());
+//        }
 
         // Locate the currently focused item or add it if needed.
         int curIndex = -1;
